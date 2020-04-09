@@ -57,9 +57,6 @@ Card.Delta = styled.p`
 Card.Icon = styled.img``;
 
 export default ({ stat, variant, delta }) => {
-  if (Math.sign(delta) === -1) {
-    console.log("negative");
-  }
   return (
     <Card variant={variant}>
       <Card.Statistic>{stat}</Card.Statistic>
