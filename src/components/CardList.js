@@ -33,9 +33,8 @@ const ChartContainer = styled(ResponsiveContainer)`
 `;
 
 const CardContainer = styled.div`
-  margin: -3rem 2rem 2rem 2rem;
+  margin: 2rem 2rem 2rem 2rem;
   @media (min-width: 768px) {
-    margin: -12rem 2rem 2rem 2rem;
   }
 `;
 

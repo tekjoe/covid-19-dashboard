@@ -18,8 +18,8 @@ function App() {
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <Header toggleTheme={toggleTheme} />
-      <CardList />
       <Calendar />
+      <CardList />
       <GlobalStyle />
     </ThemeProvider>
   );

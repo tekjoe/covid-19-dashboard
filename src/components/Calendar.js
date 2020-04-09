@@ -5,26 +5,31 @@ const Calendar = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem 0;
+  margin: 4rem 2rem;
   @media (min-width: 768px) {
-    margin: 10rem 0;
   }
 `;
 
 Calendar.Day = styled.h2`
   color: ${({ theme }) => theme.textColor};
-  font-size: 3rem;
+  font-size: 16vw;
   line-height: 1;
   @media (min-width: 768px) {
     font-size: 8vw;
+  }
+  @media (min-width: 1440px) {
+    font-size: 9.625rem;
   }
 `;
 
 Calendar.SubText = styled.p`
   color: ${({ theme }) => theme.metaColor};
-  font-size: 1.25rem;
+  font-size: 5vw;
   @media (min-width: 768px) {
     font-size: 3vw;
+  }
+  @media (min-width: 1440px) {
+    font-size: 3.625rem;
   }
 `;
 
