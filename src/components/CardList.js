@@ -24,7 +24,7 @@ const MyLoader = () => (
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
   >
-    <rect x="5" y="18" rx="0" ry="0" width="275" height="150" />
+    <rect x="5" y="18" rx="0" ry="0" width="275" height="200" />
   </ContentLoader>
 );
 
@@ -182,8 +182,6 @@ export default () => {
           ))
         ) : (
           <CardGrid>
-            <MyLoader />
-            <MyLoader />
             <MyLoader />
             <MyLoader />
             <MyLoader />

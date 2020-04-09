@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import styled from "styled-components";
 import axios from "axios";
 import moment from "moment";
@@ -19,6 +20,9 @@ NewsList.Title = styled.h2`
 const NewsItem = styled.a`
   color: ${({ theme }) => theme.textColor};
   background: ${({ theme }) => theme.cardBackground};
+  border-left: 3px solid hsl(37, 97%, 70%);
+  border-bottom: none;
+  border-right: none;
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
@@ -54,7 +58,6 @@ export default () => {
         `https://hn.algolia.com/api/v1/search_by_date?query=corona&tags=story&hitsPerPage=10`
       );
       setNews({ articles: result.data.hits });
-      console.log(result.data);
     }
     getNewsArticles();
   }, []);
