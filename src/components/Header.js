@@ -30,7 +30,7 @@ Header.Title = styled.div`
   @media (min-width: 768px) {
     h1 {
       margin-bottom: 0;
-      font-size: 3rem;
+      font-size: 2rem;
     }
   }
 `;

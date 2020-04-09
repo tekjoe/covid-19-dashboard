@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import CardList from "./components/CardList";
 import Header from "./components/Header";
 import Calendar from "./components/Calendar";
+import NewsList from "./components/NewsList";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -20,6 +21,7 @@ function App() {
       <Header toggleTheme={toggleTheme} />
       <Calendar />
       <CardList />
+      <NewsList />
       <GlobalStyle />
     </ThemeProvider>
   );

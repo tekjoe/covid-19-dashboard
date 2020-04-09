@@ -193,13 +193,12 @@ export default () => {
         <ChartContainer height={400}>
           <AreaChart
             data={allData}
-            margin={{ top: 10, right: 0, left: 0, bottom: 0 }}
+            margin={{ top: 3, right: 3, left: 0, bottom: 3 }}
           >
             <XAxis dataKey="date" hide={true} reversed={true} />
             <YAxis hide={true} />
             <CartesianGrid strokeDasharray="3 3" />
             <Tooltip />
-
             <Area
               type="monotone"
               dataKey="total"
