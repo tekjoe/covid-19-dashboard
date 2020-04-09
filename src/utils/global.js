@@ -15,5 +15,6 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
     transition-property: background, color;
     transition-duration: 0.25s;
+    transition-timing-function: linear;
   }
 `;

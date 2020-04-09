@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const ThemeToggler = styled.div`
@@ -31,6 +31,7 @@ ThemeToggler.Switch = styled.label`
       -webkit-transform: translateX(2rem);
       -ms-transform: translateX(2rem);
       transform: translateX(2rem);
+      background-color: ${({ theme }) => theme.cardBackground};
     }
   }
 `;
@@ -61,11 +62,20 @@ ThemeToggler.Slider = styled.span`
 `;
 
 export default ({ toggleTheme }) => {
+  const [checked, setChecked] = useState(true);
+  const handleClick = () => {
+    setChecked(!checked);
+  };
   return (
     <ThemeToggler>
       <p>Dark Mode</p>
       <ThemeToggler.Switch>
-        <input type="checkbox" onChange={toggleTheme} />
+        <input
+          type="checkbox"
+          onChange={toggleTheme}
+          checked={checked}
+          onClick={handleClick}
+        />
         <ThemeToggler.Slider />
       </ThemeToggler.Switch>
     </ThemeToggler>

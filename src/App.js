@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import Calendar from "./components/Calendar";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const toggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");

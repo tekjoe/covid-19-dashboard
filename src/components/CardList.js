@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import moment from "moment";
+import ContentLoader from "react-content-loader";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 import Container from "./Container";
 import Card from "./Card";
-import axios from "axios";
-import ContentLoader from "react-content-loader";
 
 const MyLoader = () => (
   <ContentLoader
@@ -17,6 +27,10 @@ const MyLoader = () => (
     <rect x="5" y="18" rx="0" ry="0" width="275" height="150" />
   </ContentLoader>
 );
+
+const ChartContainer = styled(ResponsiveContainer)`
+  margin-top: 2rem;
+`;
 
 const CardContainer = styled.div`
   margin: -3rem 2rem 2rem 2rem;
@@ -57,15 +71,25 @@ export default () => {
   useEffect(() => {
     async function getData() {
       const result = await axios(
-        "https://covidtracking.com/api/v1/states/current.json"
+        "https://covidtracking.com/api/v1/states/daily.json"
       );
       setData({ stateData: result.data });
     }
     getData();
   }, []);
-  let filteredState = data.stateData.filter(
-    (state) => state.state === selectedState
-  );
+  const yesterday = moment().subtract(1, "day").format("YYYYMMDD");
+  let todaysData = data.stateData
+    .filter((state) => state.state === selectedState)
+    .filter((state) => state.date === parseInt(yesterday));
+
+  let allData = data.stateData
+    .filter((state) => state.state === selectedState)
+    .map((state) => ({
+      date: moment(state.date.toString()).format("l"),
+      positive: state.positive,
+      negative: state.negative,
+      total: state.totalTestResults,
+    }));
   return (
     <Container>
       <CardContainer>
@@ -122,16 +146,36 @@ export default () => {
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </StateSelector>
-        {filteredState.length ? (
-          filteredState.map((state) => (
+        {todaysData.length ? (
+          todaysData.map((state) => (
             <CardGrid key={1}>
-              <Card stat={state.totalTestResults} variant="total tested" />
-              <Card stat={state.negative} variant="negative" />
-              <Card stat={state.positive} variant="positive" />
+              <Card
+                stat={state.totalTestResults}
+                delta={state.totalTestResultsIncrease}
+                variant="total tested"
+              />
+              <Card
+                stat={state.negative}
+                delta={state.negativeIncrease}
+                variant="negative"
+              />
+              <Card
+                stat={state.positive}
+                delta={state.positiveIncrease}
+                variant="positive"
+              />
               {state.hospitalized ? (
-                <Card stat={state.hospitalized} variant="hospitalized" />
+                <Card
+                  stat={state.hospitalized}
+                  delta={state.hospitalizedIncrease}
+                  variant="hospitalized"
+                />
               ) : null}
-              <Card stat={state.death} variant="deaths" />
+              <Card
+                stat={state.death}
+                delta={state.deathIncrease}
+                variant="deaths"
+              />
               {state.inIcuCumulative ? (
                 <Card stat={state.inIcuCumulative} variant="in icu" />
               ) : null}
@@ -147,6 +191,39 @@ export default () => {
             <MyLoader />
           </CardGrid>
         )}
+        <ChartContainer height={400}>
+          <AreaChart
+            data={allData}
+            margin={{ top: 10, right: 0, left: 0, bottom: 0 }}
+          >
+            <XAxis dataKey="date" hide={true} reversed={true} />
+            <YAxis hide={true} />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Tooltip />
+
+            <Area
+              type="monotone"
+              dataKey="total"
+              stroke="hsl(195, 100%, 50%)"
+              fill="hsl(195, 100%, 50%)"
+              fillOpacity={0.7}
+            />
+            <Area
+              type="monotone"
+              dataKey="negative"
+              stroke="hsl(163, 72%, 41%)"
+              fill="hsl(163, 72%, 41%)"
+              fillOpacity={0.7}
+            />
+            <Area
+              type="monotone"
+              dataKey="positive"
+              stroke="hsl(348, 97%, 39%)"
+              fill="hsl(348, 97%, 39%)"
+              fillOpacity={0.7}
+            />
+          </AreaChart>
+        </ChartContainer>
       </CardContainer>
     </Container>
   );
