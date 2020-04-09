@@ -51,7 +51,7 @@ export default () => {
   useEffect(() => {
     async function getNewsArticles() {
       const result = await axios(
-        `http://hn.algolia.com/api/v1/search_by_date?query=corona&tags=story&hitsPerPage=10`
+        `https://hn.algolia.com/api/v1/search_by_date?query=corona&tags=story&hitsPerPage=10`
       );
       setNews({ articles: result.data.hits });
       console.log(result.data);
