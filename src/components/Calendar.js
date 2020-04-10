@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import moment from "moment";
 
 const Calendar = styled.section`
   display: flex;
@@ -22,7 +24,7 @@ Calendar.Day = styled.h2`
   }
 `;
 
-Calendar.SubText = styled.p`
+Calendar.SubText = styled(motion.abbr)`
   color: ${({ theme }) => theme.metaColor};
   font-size: 5vw;
   @media (min-width: 768px) {
@@ -45,10 +47,27 @@ export default () => {
     "Saturday",
   ];
   const today = date.getDay();
+  const isItTimeForBeer = () => {
+    const hour = moment().hour();
+    if (hour < 17) {
+      return false;
+    } else {
+      return true;
+    }
+  };
   return (
     <Calendar>
       <Calendar.Day>{days[today]}</Calendar.Day>
-      <Calendar.SubText>It really do be this day.</Calendar.SubText>
+      <Calendar.SubText
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+        title={`Accoding to my calculations, it's ${
+          isItTimeForBeer() ? "time" : "too early"
+        } for a beer.`}
+      >
+        It's time for a {isItTimeForBeer() ? "beer" : "coffee"}.
+      </Calendar.SubText>
     </Calendar>
   );
 };

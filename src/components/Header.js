@@ -6,8 +6,6 @@ import ThemeToggler from "./ThemeToggle";
 const Header = styled.header`
   background: ${({ theme }) => theme.headerBackground};
   padding: 2rem;
-  @media (min-width: 768px) {
-  }
 `;
 
 Header.Content = styled.div`

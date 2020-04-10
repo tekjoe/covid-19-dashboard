@@ -8,7 +8,7 @@ import Container from "./Container";
 const NewsList = styled.section`
   display: flex;
   flex-direction: column;
-  margin: 0 2rem;
+  margin: 0 2rem 3rem;
 `;
 
 NewsList.Title = styled.h2`
@@ -34,12 +34,12 @@ const NewsItem = styled.a`
 `;
 
 NewsItem.Body = styled.div`
-  font-size: 0.9rem;
+  font-size: 1rem;
   small {
     color: ${({ theme }) => theme.metaColor};
   }
   @media (min-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 `;
 

@@ -6,6 +6,7 @@ import CardList from "./components/CardList";
 import Header from "./components/Header";
 import Calendar from "./components/Calendar";
 import NewsList from "./components/NewsList";
+import Footer from "./components/Footer";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -22,6 +23,7 @@ function App() {
       <Calendar />
       <CardList />
       <NewsList />
+      <Footer />
       <GlobalStyle />
     </ThemeProvider>
   );

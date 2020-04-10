@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   };
   html {
-    font-family: "Poppins", 'Helvetica Neue', sans-serif;
+    font-family: "Inter", 'Helvetica Neue', sans-serif;
   }
   body {
     background: ${({ theme }) => theme.background};
