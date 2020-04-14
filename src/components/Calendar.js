@@ -15,7 +15,7 @@ const Calendar = styled.section`
 Calendar.Day = styled.h2`
   color: ${({ theme }) => theme.textColor};
   font-size: 16vw;
-  line-height: 1;
+  line-height: 1.1;
   @media (min-width: 768px) {
     font-size: 8vw;
   }
@@ -62,7 +62,7 @@ export default () => {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.1, ease: "easeOut" }}
-        title={`Accoding to my calculations, it's ${
+        title={`According to my calculations, it's ${
           isItTimeForBeer() ? "time" : "too early"
         } for a beer.`}
       >

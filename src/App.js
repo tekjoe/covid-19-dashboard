@@ -17,6 +17,7 @@ function App() {
       setTheme("light");
     }
   };
+
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <Header toggleTheme={toggleTheme} />
