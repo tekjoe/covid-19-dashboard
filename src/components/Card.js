@@ -56,13 +56,13 @@ Card.Delta = styled.p`
 
 Card.Icon = styled.img``;
 
-export default ({ stat, variant, delta }) => {
+export default ({ stat, title, delta }) => {
   return (
-    <Card variant={variant}>
+    <Card title={title}>
       <Card.Statistic>{stat}</Card.Statistic>
-      <Card.Label>{variant}</Card.Label>
+      <Card.Label>{title}</Card.Label>
       {delta ? (
-        <Card.Delta variant={Math.sign(delta) === -1 ? "red" : "green"}>
+        <Card.Delta title={Math.sign(delta) === -1 ? "red" : "green"}>
           <Card.Icon
             src={Math.sign(delta) === -1 ? iconDown : iconUp}
             alt="Delta Icon"

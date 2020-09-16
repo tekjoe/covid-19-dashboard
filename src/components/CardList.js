@@ -17,14 +17,12 @@ import Card from "./Card";
 
 const MyLoader = () => (
   <ContentLoader
-    speed={2}
-    width={275}
-    height={150}
-    viewBox="0 0 275 150"
-    backgroundColor="#f3f3f3"
-    foregroundColor="#ecebeb"
+    viewBox="0 0 372 196"
+    backgroundColor="#252a41"
+    foregroundColor="#1e202a"
+    style={{ width: `100%` }}
   >
-    <rect x="5" y="18" rx="0" ry="0" width="275" height="200" />
+    <rect x="5" y="18" rx="0" ry="0" width="800" height="200" />
   </ContentLoader>
 );
 
@@ -190,33 +188,34 @@ export default () => {
               <Card
                 stat={state.totalTestResults}
                 delta={state.totalTestResultsIncrease}
-                variant="total tested"
+                title="total tested"
               />
               <Card
                 stat={state.negative}
                 delta={state.negativeIncrease}
-                variant="negative"
+                title="negative"
               />
               <Card
                 stat={state.positive}
                 delta={state.positiveIncrease}
-                variant="positive"
+                title="positive"
               />
               {state.hospitalized ? (
                 <Card
                   stat={state.hospitalized}
                   delta={state.hospitalizedIncrease}
-                  variant="hospitalized"
+                  title="hospitalized"
                 />
               ) : null}
               <Card
                 stat={state.death}
                 delta={state.deathIncrease}
-                variant="deaths"
+                title="deaths"
               />
               {state.inIcuCumulative ? (
-                <Card stat={state.inIcuCumulative} variant="in icu" />
+                <Card stat={state.inIcuCumulative} title="in icu" />
               ) : null}
+              <Card stat={state.inIcuCurrently} title="In ICU Now" />
             </CardGrid>
           ))
         ) : (

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Container from "./Container";
-import FactCheck from "./FactCheck";
 import NewsList from "./NewsList";
 
 const NewsSection = styled.section`
@@ -45,16 +44,8 @@ export default () => {
           >
             News
           </Tab>
-          {/* <Tab
-            data-key={1}
-            onClick={handleClick}
-            active={activeTab === 1 ? true : false}
-          >
-            Rumors
-          </Tab> */}
         </Tabs>
         <NewsList active={activeTab === 0 ? true : false} />
-        {/* <FactCheck active={activeTab === 1 ? true : false} /> */}
       </NewsSection>
     </Container>
   );
