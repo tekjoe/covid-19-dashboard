@@ -98,7 +98,7 @@ export default () => {
   useEffect(() => {
     async function getData() {
       const result = await axios(
-        "https://covidtracking.com/api/v1/states/daily.json"
+        "https://api.covidtracking.com/v1/states/daily.json"
       );
       setData({ stateData: result.data });
     }

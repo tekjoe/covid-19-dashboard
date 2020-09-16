@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import axios from "axios";
 import moment from "moment";
 import Container from "./Container";
 
-const NewsList = styled.section`
-  display: flex;
+const NewsList = styled(motion.section)`
+  display: ${({ active }) => (active ? "flex" : "none")};
   flex-direction: column;
-  margin: 0 2rem 3rem;
 `;
 
 NewsList.Title = styled.h2`
@@ -50,7 +49,7 @@ NewsItem.Image = styled.img`
   border-radius: 0.25rem;
 `;
 
-export default () => {
+export default ({ active }) => {
   const [news, setNews] = useState({ articles: [] });
   useEffect(() => {
     async function getNewsArticles() {
@@ -63,8 +62,7 @@ export default () => {
   }, []);
   return (
     <Container>
-      <NewsList.Title>Top COVID-19 News</NewsList.Title>
-      <NewsList>
+      <NewsList active={active}>
         {news.articles.map((article) => (
           <NewsItem key={article.objectID} href={article.url} target="_blank">
             <NewsItem.Body>

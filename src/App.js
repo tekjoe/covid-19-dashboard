@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import CardList from "./components/CardList";
 import Header from "./components/Header";
 import Calendar from "./components/Calendar";
-import NewsList from "./components/NewsList";
+import NewsSection from "./components/NewsSection";
 import Footer from "./components/Footer";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
       <Header toggleTheme={toggleTheme} />
       <Calendar />
       <CardList />
-      <NewsList />
+      <NewsSection />
       <Footer />
       <GlobalStyle />
     </ThemeProvider>

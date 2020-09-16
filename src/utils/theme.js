@@ -16,7 +16,7 @@ export const darkTheme = {
   brightRed: "hsl(356, 69%, 56%)",
   facebook: "hsl(195, 100%, 50%)",
   twitter: "hsl(203, 89%, 53%)",
-  instagram: "linear-gradient(to top, hsl(37, 97%, 70%), hsl(329, 70%, 58%))",
+  instagram: "linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%))",
   youTube: "hsl(348, 97%, 39%)",
   toggle: "linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%))",
 };
